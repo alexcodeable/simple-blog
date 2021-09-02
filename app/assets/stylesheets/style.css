@@ -12,6 +12,10 @@ Bootstrap Temple Blog Template
 * GENERAL
 * =====================
 */
+
+@import 'bootstrap/dist/css/bootstrap';
+
+
 .text-bold {
     font-weight: 700;
   }
@@ -448,8 +452,8 @@ Bootstrap Temple Blog Template
   */
   .navbar {
     background: #fff;
-    padding-top: 20px !important;
-    padding-bottom: 20px !important;
+    padding-top: 8x !important;
+    padding-bottom: 8x !important;
     z-index: 9998;
     border-bottom: 1px solid #ddd;
   }
@@ -564,6 +568,14 @@ Bootstrap Temple Blog Template
     padding: 10px 0;
     font-size: 1.6em;
     font-weight: 300;
+    font-family: "Open Sans", sans-serif;
+  }
+
+  .navbar-nav .form-inline input:focus {
+    width: 100%;
+    border: none;
+    background: none;
+    outline: 1px solid gray !important;
     font-family: "Open Sans", sans-serif;
   }
   

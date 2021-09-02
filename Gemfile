@@ -22,6 +22,10 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+
+#For User Authentication
+gem 'devise', '~> 4.7', '>= 4.7.3'
+
 #app testing gem
 gem 'rexml', require: false
 
