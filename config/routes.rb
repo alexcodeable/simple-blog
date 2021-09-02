@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     
   end
   resources :articles
-  root 'home#index'
+  root 'articles#index'
   get 'about', to: 'home#about'
   get 'contact', to: 'home#contact'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
