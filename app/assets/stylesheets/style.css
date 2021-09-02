@@ -1325,6 +1325,7 @@ Bootstrap Temple Blog Template
   .blog-post .post-thumbnail img {
     width: 100%;
     margin-bottom: 10px;
+    border-radius: 10px !important;
   }
   
   .blog-post h1 {

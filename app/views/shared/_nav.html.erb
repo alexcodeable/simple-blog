@@ -26,17 +26,50 @@
           </div>
           <!-- Navbar Menu -->
           <div id="navbarcollapse" class="collapse navbar-collapse">
-            <ul class="navbar-nav mx-auto">
+            <ul class="navbar-nav ml-auto">
               <li class="nav-item"><a href="/" class="nav-link ">Home</a></li>
-              <li class="nav-item"><a href="#!" class="nav-link ">Blog</a></li>
+              <li class="nav-item"><a href="/articles" class="nav-link ">Articles</a></li>
               <li class="nav-item"><a href="/about" class="nav-link ">About</a></li>
               <li class="nav-item"><a href="/contact" class="nav-link ">Contact</a></li>
             </ul>
             </div>
-            <div class="">
-            <ul class="navbar-nav">
-                <li class=""><a href="/about" class="btn btn-outline-secondary btn-sm brads rounded ">About</a></li>
-              <li class=""><a href="/contact" class="btn btn-secondary btn-sm brads ml-2">Contact</a></li>
+            
+            <div id="navbarcollapse" class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+                <%
+=begin%>
+ <li class=""><a href="#sign_in" class="btn btn-outline-secondary btn-sm brads ">Sign In</a></li>
+              <li class=""><a href="#sign_out" class="btn btn-secondary btn-sm brads ml-2">Sign Up</a></li> 
+<%
+=end%>
+
+              <!--notification dropdown-->
+            <li class="nav-item dropdown">
+              <a class="nav-link" data-toggle="dropdown" data-toggle="tooltip" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="bi bi-bell h5"></i></a>
+              <div class="dropdown-menu dropdown-menu-right">
+                <a class="dropdown-item" href="#">Nothing Here</a>
+                
+              </div>
+            </li>
+              <!--account dropdown-->
+             <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><img width="30" height="30" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="img-thumbnail nav-item" alt="..."></a>
+              <div class="dropdown-menu dropdown-menu-lg-right">
+                <a class="dropdown-item" href="#">Username <br> <span>Email Address</span></a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Notifications <span class="badge badge-secondary">4</span></a>
+                <a class="dropdown-item" href="/articles/new">Write Article</a>
+                <a class="dropdown-item" href="#">Articles</a>
+                <a class="dropdown-item" href="#">Bookmarks</a>
+                <a class="dropdown-item" href="#">Stats</a>
+                <a class="dropdown-item text-success" href="#">Become a Member</a>
+                <a class="dropdown-item" href="/articles" target="_blank">Help /Support</a>
+                <a class="dropdown-item" href="#">Settings</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item text-danger" href="#">Sign-Out</a>
+              </div>
+            </li>
+              
             </ul>
           </div>
         </div>
