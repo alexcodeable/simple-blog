@@ -1,7 +1,12 @@
-<% @users.each do |user| %>
+
+
+<div class="container">
 <br>
 <ol>
-    <li><%= user.email %></li>
+<% @users.each do |user| %>
+    <li><%= link_to user.email, user %></li>
+<% end %>
 </ol>
 <br><br><br>
-<% end %>
+
+</div>

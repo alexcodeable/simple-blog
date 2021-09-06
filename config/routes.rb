@@ -5,12 +5,14 @@ Rails.application.routes.draw do
     post 'sign_up', to: 'devise/registrations#create'
     get 'sign_in', to: 'devise/sessions#new'
     post 'sign_in', to: 'devise/sessions#create'
-    delete 'sign_out', to: 'devise/sessions#destroy'
-    
+    get 'sign_out', to: 'devise/sessions#destroy', as: :sign_out
+    get 'profile/edit', to: 'devise/registrations#edit'
+  
   end
+  get 'user/:id', to: 'users#show'
+  get 'users', to: 'users#index'
+  resources :user
   resources :articles
-  get 'profile/:id', to: 'users#show'
-  get 'all_profiles', to: 'users#index'
   get 'new-article', to: 'articles#new'
   get 'about', to: 'home#about'
   get 'contact', to: 'home#contact'
