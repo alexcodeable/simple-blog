@@ -9,8 +9,11 @@ Rails.application.routes.draw do
     
   end
   resources :articles
-  root 'articles#index'
+  get 'profile/:id', to: 'users#show'
+  get 'all_profiles', to: 'users#index'
+  get 'new-article', to: 'articles#new'
   get 'about', to: 'home#about'
   get 'contact', to: 'home#contact'
+  root 'articles#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
