@@ -34,16 +34,17 @@
              <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><img width="30" height="30" style="border-radius:50%;" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="img-fluid nav-item" alt="profile image"></a>
               <div class="dropdown-menu dropdown-menu-lg-right">
-                <a class="dropdown-item" href="#">Username <br> <span><%= current_user.email %></span></a>
+                <a class="dropdown-item" href="#"><%= current_user.username %> <br> <span><%= current_user.email %></span></a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#">Notifications <span class="badge badge-secondary">4</span></a>
                 <a class="dropdown-item" href="/new-article">Write Article</a>
-                <a class="dropdown-item" href="#">Articles</a>
+                <a class="dropdown-item" href="/articles">Articles</a>
+                <%= link_to "Profile", user_path(current_user), class: "dropdown-item" %>
                 <a class="dropdown-item" href="#">Bookmarks</a>
                 <a class="dropdown-item" href="#">Stats</a>
                 <a class="dropdown-item text-success" href="#">Become a Member</a>
                 <a class="dropdown-item" href="/articles" target="_blank">Help /Support</a>
-                <a class="dropdown-item" href="/profile/edit">Settings</a>
+                <a class="dropdown-item" href="/profile/edit">User Settings</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item text-danger" href="/sign_out">Sign-Out</a>
               </div>

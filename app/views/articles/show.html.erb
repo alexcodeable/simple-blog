@@ -11,11 +11,11 @@
                   <div class="category"><a href="#">Business</a></div>
                 </div>
                 <h2><%= @article.title %><a href="#"><i data-placement="right" title="Bookmark this Article!" class="bi bi-bookmarks"></i></a></h2>
-                <div class="post-footer d-flex align-items-center flex-column flex-sm-row"><a href="#" class="author d-flex align-items-center flex-wrap">
+                <div class="post-footer d-flex align-items-center flex-column flex-sm-row"><a class="author d-flex align-items-center flex-wrap">
                     <div class="avatar"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80" alt="..." class="img-fluid"></div>
-                    <div class="title"><span>John Doe</span></div></a>
+                    <div class="title"><span><%= link_to @article.user.first_name + " " + @article.user.last_name, user_path %></span></div></a>
                   <div class="d-flex align-items-center flex-wrap">       
-                    <div class="date"><i class="bi bi-clock"></i> 2 months ago</div>
+                    <div class="date"><i class="bi bi-clock"></i> <%= @article.created_at.strftime("%d %b, %Y  %H:%M") %></div>
                     <div class="views"><i class="bi bi-eye"></i> 500</div>
                     <div class="comments meta-last"><i class="bi bi-chat-left-dots"></i>12</div>
                   </div>
@@ -125,39 +125,7 @@
             </form>
           </div>
           <!-- Widget [Latest Posts Widget]        -->
-          <div class="widget latest-posts">
-            <header>
-              <h3 class="h6">Latest Posts</h3>
-            </header>
-            <div class="blog-posts"><a href="#">
-                <div class="item d-flex align-items-center">
-                  <div class="image"><img src="img/small-thumbnail-1.jpg" alt="..." class="img-fluid"></div>
-                  <div class="title"><strong>Alberto Savoia Can Teach You About</strong>
-                    <div class="d-flex align-items-center">
-                      <div class="views"><i class="bi bi-eye"></i> 500</div>
-                      <div class="comments"><i class="bi bi-chat-left-dots"></i>12</div>
-                    </div>
-                  </div>
-                </div></a><a href="#">
-                <div class="item d-flex align-items-center">
-                  <div class="image"><img src="img/small-thumbnail-2.jpg" alt="..." class="img-fluid"></div>
-                  <div class="title"><strong>Alberto Savoia Can Teach You About</strong>
-                    <div class="d-flex align-items-center">
-                      <div class="views"><i class="bi bi-eye"></i> 500</div>
-                      <div class="comments"><i class="bi bi-chat-left-dots"></i>12</div>
-                    </div>
-                  </div>
-                </div></a><a href="#">
-                <div class="item d-flex align-items-center">
-                  <div class="image"><img src="img/small-thumbnail-3.jpg" alt="..." class="img-fluid"></div>
-                  <div class="title"><strong>Alberto Savoia Can Teach You About</strong>
-                    <div class="d-flex align-items-center">
-                      <div class="views"><i class="bi bi-eye"></i> 500</div>
-                      <div class="comments"><i class="bi bi-chat-left-dots"></i>12</div>
-                    </div>
-                  </div>
-                </div></a></div>
-          </div>
+          <%= render "shared/latest" %>
           <!-- Widget [Categories Widget]-->
           <div class="widget categories">
             <header>

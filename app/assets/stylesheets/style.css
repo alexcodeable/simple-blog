@@ -458,16 +458,16 @@ Bootstrap Temple Blog Template
   }
   
   .btn {
-    border-radius: 0 !important;
+    border-radius: 5px !important;
   }
   
-  .badge {
+  /* .badge {
     font-weight: 300;
   }
   
   .badge-rounded {
     border-radius: 50px;
-  }
+  } */
   
   .heading-light {
     font-weight: 300 !important;
