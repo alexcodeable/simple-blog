@@ -6,7 +6,7 @@
         <% Article.all.order("created_at Desc").limit(3).each do |article| %>
         <div class="item d-flex align-items-center">
 
-    <%= link_to article do %><div class="image"><img style="border-radius:5px" src="https://images.unsplash.com/photo-1587443414338-be04f4e1b72c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OTF8fGNvdmVyJTIwcGhvdG98ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="..." class="img-fluid"></div><% end %>
+    <%= link_to article do %><div class="image"><%= image_tag(article.image, width: "60", height: "55", style: "border-radius:5px;" )%></div><% end %>
      <%= link_to article do %><div class="title"><strong><%= article.title %> </strong> <% end %>
             <div class="d-flex align-items-center">
                 <div class="views"><i class="bi bi-eye"></i> 500</div>

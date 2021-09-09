@@ -5,15 +5,19 @@
         <main class="post blog-post col-lg-8"> 
           <div class="container">
             <div class="post-single">
-              <div class="post-thumbnail"><img src="https://images.unsplash.com/photo-1630431789839-99f88935932e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" alt="..." class="img-fluid"></div>
+            <% if @article.user == current_user %>
+            <%= link_to 'Edit', edit_article_path(@article), class: "btn btn-outline-secondary mb-3 btn-sm" %> |
+            <%= link_to 'Back', articles_path, class: "btn btn-outline-secondary mb-3 btn-sm" %>
+            <% end %>
+              <div class="post-thumbnail"><%= image_tag(@article.image)%></div>
               <div class="post-details">
                 <div class="post-meta d-flex justify-content-between">
                   <div class="category"><a href="#">Business</a></div>
                 </div>
                 <h2><%= @article.title %><a href="#"><i data-placement="right" title="Bookmark this Article!" class="bi bi-bookmarks"></i></a></h2>
                 <div class="post-footer d-flex align-items-center flex-column flex-sm-row"><a class="author d-flex align-items-center flex-wrap">
-                    <div class="avatar"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80" alt="..." class="img-fluid"></div>
-                    <div class="title"><span><%= link_to @article.user.first_name + " " + @article.user.last_name, user_path %></span></div></a>
+                    <%= link_to @article.user do %><div class="avatar"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80" alt="..." class="img-fluid"></div><% end %>
+                    <%= link_to @article.user do %><div class="title"><span><%= @article.user.first_name + " " + @article.user.last_name %></span></div></a><% end %>
                   <div class="d-flex align-items-center flex-wrap">       
                     <div class="date"><i class="bi bi-clock"></i> <%= @article.created_at.strftime("%d %b, %Y  %H:%M") %></div>
                     <div class="views"><i class="bi bi-eye"></i> 500</div>
@@ -52,7 +56,7 @@
                   <div class="comment">
                     <div class="comment-header d-flex justify-content-between">
                       <div class="user d-flex align-items-center">
-                        <div class="image"><img src="img/user.svg" alt="..." class="img-fluid rounded-circle"></div>
+                        <div class="image"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80" alt="..." class="img-fluid rounded-circle"></div>
                         <div class="title"><strong>Jabi Hernandiz</strong><span class="date">May 2016</span></div>
                       </div>
                     </div>
@@ -63,7 +67,7 @@
                   <div class="comment">
                     <div class="comment-header d-flex justify-content-between">
                       <div class="user d-flex align-items-center">
-                        <div class="image"><img src="img/user.svg" alt="..." class="img-fluid rounded-circle"></div>
+                        <div class="image"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80" alt="..." class="img-fluid rounded-circle"></div>
                         <div class="title"><strong>Nikolas</strong><span class="date">May 2016</span></div>
                       </div>
                     </div>
@@ -74,7 +78,7 @@
                   <div class="comment">
                     <div class="comment-header d-flex justify-content-between">
                       <div class="user d-flex align-items-center">
-                        <div class="image"><img src="img/user.svg" alt="..." class="img-fluid rounded-circle"></div>
+                        <div class="image"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80" alt="..." class="img-fluid rounded-circle"></div>
                         <div class="title"><strong>John Doe</strong><span class="date">May 2016</span></div>
                       </div>
                     </div>
@@ -160,5 +164,4 @@
 
 
 
-<%= link_to 'Edit', edit_article_path(@article), class: "btn btn-outline-secondary mb-3" %> |
-<%= link_to 'Back', articles_path, class: "btn btn-outline-secondary mb-3" %>
+

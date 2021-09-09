@@ -64,49 +64,59 @@
                 <th scope="col">Title</th>
                 <th scope="col">Comments</th>
                 <th scope="col">Status</th>
-                <th scope="col">Ctrated_at</th>
+                <th scope="col">Time Stamp</th>
                 <th scope="col" colpan="1" >Actions</th>
               </tr>
             </thead>
             <tbody>
+           <% Article.all.each do | article | %>
               <tr>
+           <% if article.user == current_user %>
                 <th scope="row">1</th>
-                <td><img width="30" height="30" style="border-radius:5px;" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="img-fluid nav-item" alt="profile image"></td>
-                <td>Better yet would</td>
+                <td><%= image_tag(article.image, width: "40", height: "30", style: "border-radius:5px;" )%></td>
+                <td><%= truncate(article.title, length: 10)%></td>
                 <td>0</td>
-                <td><a href="#" class="badge badge-secondary">Draft</a></td>
-                <td>2021-09-02 13:52:46</td>
-                <td ><a href="#" class="badge badge-info">View</a>
-                <a href="#" class="badge badge-primary">Edit</a>
-                <a href="#" class="badge badge-danger">Delete</a></td>
+                <td><a  class="badge badge-secondary">Draft</a></td>
+                <td><%= article.created_at.strftime("%d %b, %Y  %H:%M") %></td>
+                <td >
+                <%= link_to article do %><span href="#" class="badge badge-info">View</span><% end %>
+                <%= link_to edit_article_path(article) do %><span href="#" class="badge badge-primary">Edit</span><% end %>
+               <%= link_to article, method: :delete, data: { confirm: 'Are you sure you want to delete this post?' }  do %> <span href="#" class="badge badge-danger">Delete</span></td><% end %>
+              <% end %>
               </tr>
+
+              <% end %>
             </tbody>
           </table>
         <!-- End Blog Card -->
         <% else %>
         <!-- End Blog Card -->
-        <article class="card mb-3 mb-sm-5">
-          <img class="card-img-top" src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" alt="Image Description">
+         <% Article.all.each do | article | %>
+         <% if article.user == @user %>
+        <article class="card mb-3 mb-sm-5 ">
+          <%= image_tag(article.image, class: "card-img-top") %>
 
           <div class="card-body">
             <div class="category"> <a class="d-block small font-weight-bold text-cap mb-2" href="#">Community</a></div>
 
-            <h3><a class="text-inherit post-thumbnail" href="#blog-single">How Google Assistant now helps you record stories for kids</a></h3>
+           <%= link_to article do %> <h3 class="text-inherit post-thumbnail"><%= article.title%></h3><% end %>
 
-            <p>Google is constantly updating its consumer AI, Google Assistant, with new features.</p>
+            <p><%= truncate(article.content, length: 95) %></p>
 
             <div class="media align-items-center pt-5">
               <div class="avatar-group">
                 <div class="avatar avatar-xs avatar-circle" data-toggle="tooltip" data-placement="top" title="" data-original-title="Hanna Wolfe ">
-                  <img title="Hanna Wolfe" class="avatar-img" width="25" height="25" style="border-radius:50%;" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="img-fluid rounded-circle" alt="Image Description">
+                  <img title="<%= article.user.first_name + " " + article.user.last_name %>" class="avatar-img" width="25" height="25" style="border-radius:50%;" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="img-fluid rounded-circle" alt="Image Description">
                 </div>
               </div>
               <div class="media-body d-flex justify-content-end text-muted font-size-1 ml-2">
-                July 15
+                <%= article.created_at.strftime("%b, %Y") %>
               </div>
             </div>
           </div>
         </article>
+          <% end %>
+        <% end %>
         <!-- End Blog Card -->
         <% end %>
 
