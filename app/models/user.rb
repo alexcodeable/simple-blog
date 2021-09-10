@@ -5,6 +5,16 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :timeoutable, authentication_keys: [:login]
 
   has_many :articles
+  has_one_attached :avatar
+  after_commit :add_default_avatar, on: %i[ create update ]
+
+  def avatar_thumbnail
+    if avatar.attached?
+    avatar.variant(resize: "150x150!").processed
+    else
+      "/default_avatar.jpg"
+    end
+  end
 
   validates :username, presence: true, uniqueness: { case_sensitive: false }
 
@@ -20,6 +30,17 @@ class User < ApplicationRecord
       where(conditions.to_h).where(["lower(username) = :value OR lower(email) = :value", { :value => login.downcase }]).first
     elsif conditions.has_key?(:username) || conditions.has_key?(:email)
       where(conditions.to_h).first
+    end
+  end
+
+  private
+  def add_default_avatar
+    unless avatar.attached?
+      avatar.attach(
+        io: File.open(
+          Rails.root.join( 'app', 'assets', 'images', 'default_avatar.jpg')
+        ), filename: 'default_avatar.jpg', content_type: 'image/jpg'
+      )
     end
   end
 end

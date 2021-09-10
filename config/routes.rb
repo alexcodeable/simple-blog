@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     get 'sign_in', to: 'devise/sessions#new'
     post 'sign_in', to: 'devise/sessions#create'
     get 'sign_out', to: 'devise/sessions#destroy', as: :sign_out
+    delete 'sign_out', to: 'devise/sessions#destroy'
     get 'profile/edit', to: 'devise/registrations#edit'
   
   end
