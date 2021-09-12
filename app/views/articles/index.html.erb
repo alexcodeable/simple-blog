@@ -18,7 +18,7 @@
                     <div class="category"><a href="#">Business</a></div>
                   </div><%= link_to article do %>
                     <h3 class="h4"><%=  article.title %></h3><% end %>
-                  <p class="text-muted"><%= truncate(article.content, length: 100) %></p>
+                  <p class="text-muted"><%= article.content.to_plain_text.truncate(100) %></p>
                   <footer class="post-footer d-flex align-items-center"><div class="author d-flex align-items-center flex-wrap">
                      <%= link_to article.user do %> <%= image_tag(article.user.avatar, class: "avatar img-fluid") %><% end %>
                     <%= link_to article.user do %>  <div class="title"><span><%= article.user.first_name + " " + article.user.last_name %></span></div> <% end %>
@@ -33,13 +33,11 @@
               
             </div>
             <!-- Pagination -->
-            <nav aria-label="Page navigation example">
-              <ul class="pagination pagination-template d-flex justify-content-center">
-                <li class="page-item"><a href="#" class="page-link"> <i class="bi bi-arrow-left"></i></a></li>
-                <li class="page-item"><a href="#" class="page-link active">1</a></li>
-                <li class="page-item"><a href="#" class="page-link">2</a></li>
-                <li class="page-item"><a href="#" class="page-link">3</a></li>
-                <li class="page-item"><a href="#" class="page-link"> <i class="bi bi-arrow-right"></i></a></li>
+            <nav aria-label="  Page navigation example">
+              <ul class=" digg_pagination pagination pagination-template d-flex justify-content-center">
+                
+                <%= will_paginate @article, :container => false %>
+                
               </ul>
             </nav>
           </div>

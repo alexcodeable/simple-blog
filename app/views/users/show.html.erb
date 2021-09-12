@@ -37,7 +37,7 @@
               <% if user_signed_in? && @user == current_user %>
               <div class="col-auto">
                 <span class="h6">Joined</span>
-                <span><%= time_ago_in_words(@user.created_at)%> ago</span>
+                <span><%= time_ago_in_words(@user.created_at)%> Ago</span>
               </div>
               <% end %>
             </div>
@@ -98,7 +98,7 @@
         <!-- End Blog Card -->
         <% else %>
         <!-- End Blog Card -->
-         <% Article.all.each do | article | %>
+         <% Article.paginate(page: params[:page], per_page: 5).order("created_at Desc").each do | article | %>
          <% if article.user == @user %>
         <article class="card mb-3 mb-sm-5 ">
           <%= image_tag(article.image, class: "card-img-top") %>
@@ -139,6 +139,7 @@
                 <li class="page-item"><a href="#" class="page-link"> <i class="bi bi-arrow-right"></i></a></li>
               </ul>
             </nav>
+
         <!-- End Pagination -->
       </div>
     </div>

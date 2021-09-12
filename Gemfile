@@ -29,6 +29,9 @@ gem 'devise', '~> 4.7', '>= 4.7.3'
 #app testing gem
 gem 'rexml', require: false
 
+#Post Pagination
+gem 'will_paginate'
+
 # Use Active Storage variant
 gem 'image_processing', '~> 1.2'
 

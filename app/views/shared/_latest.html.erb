@@ -3,7 +3,7 @@
         <h3 class="h6">Latest Posts</h3>
     </header>
     <div class="blog-posts">
-        <% Article.all.order("created_at Desc").limit(3).each do |article| %>
+        <% Article.all.order("created_at Desc").limit(5).each do |article| %>
         <div class="item d-flex align-items-center">
 
     <%= link_to article do %><div class="image"><%= image_tag(article.image, width: "60", height: "55", style: "border-radius:5px;" ) if article.image.attached? %></div><% end %>
