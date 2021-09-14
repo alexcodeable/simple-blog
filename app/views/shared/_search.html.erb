@@ -1,0 +1,11 @@
+<div class="widget search">
+<header>
+    <h3 class="h6">Search the blog</h3>
+</header>
+<%= search_form_for @q do |f| %>
+    <div class="form-group">
+      <%= f.search_field :title_or_content_body_cont, placeholder: "Search articles by title" %>
+    <button type="submit" class="submit"><i class="bi bi-search"></i></button>
+    </div>
+<% end %>
+</div>

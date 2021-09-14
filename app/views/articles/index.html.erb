@@ -44,17 +44,7 @@
         </main>
         <aside class="col-lg-4">
           <!-- Widget [Search Bar Widget]-->
-          <div class="widget search">
-            <header>
-              <h3 class="h6">Search the blog</h3>
-            </header>
-            <form action="" method="GET" class="search-form">
-              <div class="form-group">
-                <input type="search" placeholder="What are you looking for?">
-                <button type="submit" class="submit"><i class="bi bi-search"></i></button>
-              </div>
-            </form>
-          </div>
+          <%= render "shared/search" %>
           <!-- Widget [Latest Posts Widget]        -->
           <%= render "shared/latest" %>
           <!-- Widget [Categories Widget]-->
@@ -69,42 +59,7 @@
             <div class="item d-flex justify-content-between"><a href="#">Local</a><span>25</span></div>
           </div>
           <!-- Widget [Tags Cloud Widget]-->
-          <div class="widget tags">       
-            <header>
-              <h3 class="h6">Tags</h3>
-            </header>
-            <ul class="list-inline">
-              <li class="list-inline-item"><a href="#" class="tag">#Business</a></li>
-              <li class="list-inline-item"><a href="#" class="tag">#Technology</a></li>
-              <li class="list-inline-item"><a href="#" class="tag">#Fashion</a></li>
-              <li class="list-inline-item"><a href="#" class="tag">#Sports</a></li>
-              <li class="list-inline-item"><a href="#" class="tag">#Economy</a></li>
-            </ul>
-          </div>
+          <%= render "shared/ads" %>
         </aside>
       </div>
     </div>
-
-
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @articles.each do |article| %>
-      <tr>
-        <td><% link_to 'Show', article %></td>
-        <td><% link_to 'Edit', edit_article_path(article) %></td>
-        <td><% link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Article', new_article_path %>

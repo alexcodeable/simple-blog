@@ -32,6 +32,9 @@ gem 'rexml', require: false
 #Post Pagination
 gem 'will_paginate'
 
+#gem for seach
+gem 'ransack'
+
 # Use Active Storage variant
 gem 'image_processing', '~> 1.2'
 

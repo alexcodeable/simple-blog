@@ -4,11 +4,13 @@ class ArticlesController < ApplicationController
 
   # GET /articles or /articles.json
   def index
-    @articles = Article.paginate(page: params[:page], per_page: 6).order("created_at Desc")
+    @q = Article.ransack(params[:q])
+    @articles = @q.result.paginate(page: params[:page], per_page: 6).order("created_at Desc")
   end
 
   # GET /articles/1 or /articles/1.json
   def show
+    @q = Article.ransack(params[:q])
   end
 
   # GET /articles/new
