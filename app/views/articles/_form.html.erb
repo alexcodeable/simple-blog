@@ -1,3 +1,5 @@
+
+<div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
 <%= form_with(model: article) do |form| %>
   <% if article.errors.any? %>
     <div id="error_explanation">
@@ -29,4 +31,55 @@
   <div class="actions">
     <%= form.submit class: "btn btn-outline-primary" %>
   </div>
+
+  <%= link_to 'Back', articles_path %>
+</div>
+
+
+<div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+
+          <div class="widget categories">
+            <header>
+                <h3 class="h6">Post Cover image</h3>
+              </header>
+              <%= image_tag(@article.image, width: "100%") if @article.image.attached? %>
+          </div>
+
+          <div class="widget categories">
+              <header>
+                <h3 class="h6">Categories</h3>
+              </header>
+              <%= form.select :category_id, Category.all.map {|c| [c.name, c.id]} %> <br>
+          </div>
+
+          <div class="widget categories">
+              <header>
+                <h3 class="h6">Article Status</h3>
+              </header>
+              
+              <select class="custom-select" id="inputGroupSelect01">
+                  <option selected>Save to Draft</option>
+                  <option class="">Publish</option>
+              </select>
+          </div>
+
+<!-- tags section -->
+          <div class="widget tags">       
+            <header>
+              <h3 class="h6">Tags</h3>
+            </header>
+            <input type="text" class="form-control mb-2" placeholder="new tags?" aria-label="Recipient's username" aria-describedby="basic-addon2">
+  
+            <ul class="list-inline">
+              <li class="list-inline-item"><a href="#" class="tag">#Business</a></li>
+              <li class="list-inline-item"><a href="#" class="tag">#Technology</a></li>
+              <li class="list-inline-item"><a href="#" class="tag">#Fashion</a></li>
+              <li class="list-inline-item"><a href="#" class="tag">#Sports</a></li>
+              <li class="list-inline-item"><a href="#" class="tag">#Economy</a></li>
+            </ul>
+          </div>
+            
+        </div>
+
+
 <% end %>

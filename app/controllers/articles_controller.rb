@@ -4,6 +4,7 @@ class ArticlesController < ApplicationController
 
   # GET /articles or /articles.json
   def index
+    @categories = Category.all
     @q = Article.ransack(params[:q])
     @articles = @q.result.paginate(page: params[:page], per_page: 6).order("created_at Desc")
   end
@@ -11,21 +12,29 @@ class ArticlesController < ApplicationController
   # GET /articles/1 or /articles/1.json
   def show
     @q = Article.ransack(params[:q])
+    @categories = Category.all
+
   end
 
   # GET /articles/new
   def new
     @article = Article.new
+    @categories = Category.all
+    
   end
 
   # GET /articles/1/edit
   def edit
+    @categories = Category.all
+
   end
 
   # POST /articles or /articles.json
   def create
     @article = Article.new(article_params)
     @article.user = current_user
+    @categories = Category.all.map {|c| [c.name, c.id]}
+
 
     respond_to do |format|
       if @article.save
@@ -68,6 +77,6 @@ class ArticlesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def article_params
-      params.require(:article).permit(:title, :content, :image)
+      params.require(:article).permit(:title, :content, :image, :category_id)
     end
 end

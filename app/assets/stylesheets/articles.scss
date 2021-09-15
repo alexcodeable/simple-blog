@@ -1,3 +1,14 @@
 // Place all the styles related to the Articles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+select{
+    width: 100% !important;
+    padding: 5px 2px !important; 
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    color: #495057;
+    appearance: none;
+    background: #fff url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") right 0.75rem center/8px 10px no-repeat;
+}
+

@@ -1,0 +1,8 @@
+<div class="widget categories">
+    <header>
+        <h3 class="h6">Categories</h3>
+    </header>
+    <% @categories.each do | category | %>
+    <div class="item d-flex justify-content-between"><a href="#"><%= category.name %></a><span><%= category.articles.count %></span></div>
+    <% end %>
+</div>

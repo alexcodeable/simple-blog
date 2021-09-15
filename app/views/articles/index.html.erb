@@ -15,7 +15,7 @@
                 <div class="post-details border p-2 rounded-bottom">
                   <div class="post-meta d-flex justify-content-between">
                     <div class="date meta-last"> <%= article.created_at.strftime("%d %b, | %Y") %></div>
-                    <div class="category"><a href="#">Business</a></div>
+                    <div class="category"><a href="#"><%= article.category.name if article.category.name.present? %></a></div>
                   </div><%= link_to article do %>
                     <h3 class="h4"><%=  article.title %></h3><% end %>
                   <p class="text-muted"><%= article.content.to_plain_text.truncate(100) %></p>
@@ -45,19 +45,14 @@
         <aside class="col-lg-4">
           <!-- Widget [Search Bar Widget]-->
           <%= render "shared/search" %>
+
+          <%= render "shared/ads" %>
           <!-- Widget [Latest Posts Widget]        -->
           <%= render "shared/latest" %>
           <!-- Widget [Categories Widget]-->
-          <div class="widget categories">
-            <header>
-              <h3 class="h6">Categories</h3>
-            </header>
-            <div class="item d-flex justify-content-between"><a href="#">Growth</a><span>12</span></div>
-            <div class="item d-flex justify-content-between"><a href="#">Local</a><span>25</span></div>
-            <div class="item d-flex justify-content-between"><a href="#">Sales</a><span>8</span></div>
-            <div class="item d-flex justify-content-between"><a href="#">Tips</a><span>17</span></div>
-            <div class="item d-flex justify-content-between"><a href="#">Local</a><span>25</span></div>
-          </div>
+          <%= render "shared/ads" %>
+          <!-- Widget [Categories Widget]-->
+          <%= render "shared/categ" %>
           <!-- Widget [Tags Cloud Widget]-->
           <%= render "shared/ads" %>
         </aside>

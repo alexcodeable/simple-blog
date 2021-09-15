@@ -1,59 +1,19 @@
 
 <div class="container mt-5 mb-5">
     <div class="row">
-        <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
 
 
 
         <%= render 'form', article: @article %>
 
-        <%= link_to 'Back', articles_path %> |
-        <%= link_to 'Back', articles_path %>
+        
 
         </div>
 
-        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
-          <div class="widget categories">
-              <header>
-                <h3 class="h6">Categories</h3>
-              </header>
-              
-              <select class="custom-select" id="inputGroupSelect01">
-                  <option selected>-- Select category --</option>
-                  <option class="item d-flex justify-content-between"><a href="#">Growth</a></option>
-                  <option class="item d-flex justify-content-between"><a href="#">Local</a></option>
-                  <option class="item d-flex justify-content-between"><a href="#">Sales</a></option>
-                  <option class="item d-flex justify-content-between"><a href="#">Tips</a></option>
-                  <option class="item d-flex justify-content-between"><a href="#">Local</a></option>
-              </select>
-          </div>
-
-          <div class="widget categories">
-              <header>
-                <h3 class="h6">Article Status</h3>
-              </header>
-              
-              <select class="custom-select" id="inputGroupSelect01">
-                  <option selected>Save to Draft</option>
-                  <option class="">Publish</option>
-              </select>
-          </div>
+         
 
 <!-- tags section -->
-          <div class="widget tags">       
-            <header>
-              <h3 class="h6">Tags</h3>
-            </header>
-            <input type="text" class="form-control mb-2" placeholder="new tags?" aria-label="Recipient's username" aria-describedby="basic-addon2">
-  
-            <ul class="list-inline">
-              <li class="list-inline-item"><a href="#" class="tag">#Business</a></li>
-              <li class="list-inline-item"><a href="#" class="tag">#Technology</a></li>
-              <li class="list-inline-item"><a href="#" class="tag">#Fashion</a></li>
-              <li class="list-inline-item"><a href="#" class="tag">#Sports</a></li>
-              <li class="list-inline-item"><a href="#" class="tag">#Economy</a></li>
-            </ul>
-          </div>
+          
             
           </div>
         </div>

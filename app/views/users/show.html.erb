@@ -98,7 +98,7 @@
         <!-- End Blog Card -->
         <% else %>
         <!-- End Blog Card -->
-         <% Article.paginate(page: params[:page], per_page: 5).order("created_at Desc").each do | article | %>
+         <% @article.order("created_at Desc").each do | article | %>
          <% if article.user == @user %>
         <article class="card mb-3 mb-sm-5 ">
           <%= image_tag(article.image, class: "card-img-top") %>
@@ -108,7 +108,7 @@
 
            <%= link_to article do %> <h3 class="text-inherit post-thumbnail"><%= article.title%></h3><% end %>
 
-            <p><%= truncate(article.content, length: 95) %></p>
+            <p><%= article.content.to_plain_text.truncate(95) %></p>
 
             <div class="media align-items-center pt-5">
               <div class="avatar-group">
