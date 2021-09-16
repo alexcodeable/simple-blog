@@ -12,7 +12,7 @@
               <div class="post-thumbnail"><%= image_tag(@article.image) if @article.image.attached? %></div>
               <div class="post-details">
                 <div class="post-meta d-flex justify-content-between">
-                  <div class="category"><a href="#"><%= @article.category.name if @article.category.name.present? %></a></div>
+                  <div class="category"><%= link_to @article.category.name, articles_path(:cat => @article.category.id) if @article.category.name.present? %></div>
                 </div>
                 <h2><%= @article.title %><a href="#"><i data-placement="right" title="Bookmark this Article!" class="bi bi-bookmarks"></i></a></h2>
                 <div class="post-footer d-flex align-items-center flex-column flex-sm-row"><a class="author d-flex align-items-center flex-wrap">

@@ -76,7 +76,7 @@
               </tr>
             </thead>
             <tbody>
-           <% Article.all.each do | article | %>
+           <% @article.each do | article | %>
            <% if article.user == current_user %>
               <tr>
                 <th scope="row"><i class="bi bi-arrow-right-short"></i></th>

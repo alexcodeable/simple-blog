@@ -6,7 +6,13 @@ class ArticlesController < ApplicationController
   def index
     @categories = Category.all
     @q = Article.ransack(params[:q])
-    @articles = @q.result.paginate(page: params[:page], per_page: 6).order("created_at Desc")
+    
+    cat = params[:cat]
+    if !cat.nil?
+      @articles = Article.where(:category_id => cat).paginate(page: params[:page], per_page: 6).order("created_at Desc")
+    else
+      @articles = @q.result.paginate(page: params[:page], per_page: 6).order("created_at Desc")
+    end
   end
 
   # GET /articles/1 or /articles/1.json

@@ -3,6 +3,6 @@
         <h3 class="h6">Categories</h3>
     </header>
     <% @categories.each do | category | %>
-    <div class="item d-flex justify-content-between"><a href="#"><%= category.name %></a><span><%= category.articles.count %></span></div>
+    <div class="item d-flex justify-content-between"><%= link_to category.name, articles_path(:cat => category.id) %><span><%= category.articles.count %></span></div>
     <% end %>
 </div>
