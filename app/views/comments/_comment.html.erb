@@ -1,0 +1,20 @@
+
+<div class="comment">
+  <div class="comment-header d-flex justify-content-between">
+    <div class="user d-flex align-items-center">
+      <div class="image"><%= image_tag(comment.user.avatar, class: "img-fluid rounded-circle") %></div>
+      <div class="title"><strong><%= comment.user.first_name + " " + comment.user.last_name %></strong><span class="date"><%= comment.created_at.strftime("%d %b, %Y") %></span></div>
+    </div>
+  </div>
+  <div class="comment-body">
+    <%= comment.content %>
+    <a href="#!" class="sub-form-display ml-3" ><i class="bi bi-reply h4"></i>Reply</a>
+      
+      <div  class="sub-form ">
+       <%= render "comments/form", locals: {article: comment.article, parent: comment } %>
+      </div>
+    <div class="sub-comments">
+      <%= render comment.comments %>
+    </div>
+  </div>
+</div>

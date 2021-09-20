@@ -11,10 +11,13 @@ Rails.application.routes.draw do
     get 'profile/edit', to: 'devise/registrations#edit'
   
   end
+  resources :articles do
+    resources :comments, only: [:create]
+  end
+  
   get 'user/:id', to: 'users#show'
   get 'users', to: 'users#index'
   resources :user
-  resources :articles
   get 'new-article', to: 'articles#new'
   get 'about', to: 'home#about'
   get 'contact', to: 'home#contact'

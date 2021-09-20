@@ -23,7 +23,7 @@
                      <%= link_to article.user do %> <%= image_tag(article.user.avatar, class: "avatar img-fluid") %><% end %>
                     <%= link_to article.user do %>  <div class="title"><span><%= article.user.first_name + " " + article.user.last_name %></span></div> <% end %>
                     <div class="date"><i class="bi bi-clock"></i> <%= article.created_at.strftime("%d %b, %Y") %></div>
-                    <div class="comments meta-last"><i class="bi bi-chat-left-dots"></i>12</div>
+                    <div class="comments meta-last"><i class="bi bi-chat-left-dots"></i><%= article.comments.count %></div>
                   </footer>
                 </div>
               </div>

@@ -10,7 +10,7 @@
      <%= link_to article do %><div class="title"><strong><%= article.title %> </strong> <% end %>
             <div class="d-flex align-items-center">
                 <div class="views"><i class="bi bi-eye"></i> 500</div>
-                <div class="comments"><i class="bi bi-chat-left-dots"></i>12</div>
+                <div class="comments"><i class="bi bi-chat-left-dots"></i><%= article.comments.count %></div>
             </div>
             </div>
         </div>

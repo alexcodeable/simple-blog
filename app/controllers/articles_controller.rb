@@ -9,9 +9,9 @@ class ArticlesController < ApplicationController
     
     cat = params[:cat]
     if !cat.nil?
-      @articles = Article.where(:category_id => cat).paginate(page: params[:page], per_page: 6).order("created_at Desc")
+      @articles = Article.where(:category_id => cat).paginate(page: params[:page], per_page: 6).order(id: :desc)
     else
-      @articles = @q.result.paginate(page: params[:page], per_page: 6).order("created_at Desc")
+      @articles = @q.result.paginate(page: params[:page], per_page: 6).order(id: :desc)
     end
   end
 

@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :timeoutable, authentication_keys: [:login]
 
   has_many :articles
+  has_many :comments
   has_one_attached :avatar
   after_commit :add_default_avatar, on: %i[ create update ]
 

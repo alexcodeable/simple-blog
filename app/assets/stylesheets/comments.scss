@@ -1,0 +1,21 @@
+// Place all the styles related to the Comments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+textarea:focus{
+    transition: 0 !important;
+
+}
+
+*:focus {
+  outline: none !important;
+}
+
+textarea{
+  background: none;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+    border-radius: 0;
+    font-family: "Open Sans", sans-serif;
+}

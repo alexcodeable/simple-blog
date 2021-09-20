@@ -21,7 +21,7 @@
                   <div class="d-flex align-items-center flex-wrap">       
                     <div class="date"><i class="bi bi-clock"></i> <%= @article.created_at.strftime("%d %b, %Y  %H:%M") %></div>
                     <div class="views"><i class="bi bi-eye"></i> 500</div>
-                    <div class="comments meta-last"><i class="bi bi-chat-left-dots"></i>12</div>
+                    <div class="comments meta-last"><i class="bi bi-chat-left-dots"></i><%= @article.comments.count %></div>
                   </div>
                 </div>
                 <div class="post-body">
@@ -30,66 +30,18 @@
                 </div>
                 <div class="post-tags"><a href="#" class="tag">#Business</a><a href="#" class="tag">#Tricks</a><a href="#" class="tag">#Financial</a><a href="#" class="tag">#Economy</a></div>
                 
-
-                    
-                <div class="post-comments">
+                 <div class="post-comments">
                   <header>
-                    <h3 class="h6">Post Comments<span class="no-of-comments">(3)</span></h3>
+                    <h3 class="h6">Post Comments<span class="no-of-comments">(<%= @article.comments.count %>)</span></h3>
                   </header>
-                  <div class="comment">
-                    <div class="comment-header d-flex justify-content-between">
-                      <div class="user d-flex align-items-center">
-                        <div class="image"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80" alt="..." class="img-fluid rounded-circle"></div>
-                        <div class="title"><strong>Jabi Hernandiz</strong><span class="date">May 2016</span></div>
-                      </div>
-                    </div>
-                    <div class="comment-body">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-                    </div>
+                     <%= render @article.comments.where(parent_id: nil ).includes(:user).order(id: :desc) %>
                   </div>
-                  <div class="comment">
-                    <div class="comment-header d-flex justify-content-between">
-                      <div class="user d-flex align-items-center">
-                        <div class="image"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80" alt="..." class="img-fluid rounded-circle"></div>
-                        <div class="title"><strong>Nikolas</strong><span class="date">May 2016</span></div>
-                      </div>
-                    </div>
-                    <div class="comment-body">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-                    </div>
-                  </div>
-                  <div class="comment">
-                    <div class="comment-header d-flex justify-content-between">
-                      <div class="user d-flex align-items-center">
-                        <div class="image"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80" alt="..." class="img-fluid rounded-circle"></div>
-                        <div class="title"><strong>John Doe</strong><span class="date">May 2016</span></div>
-                      </div>
-                    </div>
-                    <div class="comment-body">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-                    </div>
-                  </div>
-                </div>
+                
                 <div class="add-comment">
-                  <header>
+                    <header>
                     <h3 class="h6">Leave a reply</h3>
-                  </header>
-                  <form action="#" class="commenting-form">
-                    <div class="row">
-                      <div class="form-group col-md-6">
-                        <input type="text" name="username" id="username" placeholder="Name" class="form-control">
-                      </div>
-                      <div class="form-group col-md-6">
-                        <input type="email" name="useremail" id="useremail" placeholder="Email Address (will not be published)" class="form-control">
-                      </div>
-                      <div class="form-group col-md-12">
-                        <textarea name="usercomment" id="usercomment" placeholder="Type your comment" class="form-control"></textarea>
-                      </div>
-                      <div class="form-group col-md-12">
-                        <button type="submit" class="btn btn-secondary">Publish Comment</button>
-                      </div>
-                    </div>
-                  </form>
+                    </header>
+                <%= render "comments/form", locals: {article: @article, parent: nil } %>
                 </div>
               </div>
             </div>
@@ -119,8 +71,14 @@
 
 
 
+<script>
+  document.querySelectorAll('.sub-form-display').forEach((el) => {
+    el.addEventListener('click', (ev) => {
+      ev.preventDefault();
+      el.nextElementSibling.style = 'display: block;'
+    })
+  })
 
-
-
+</script>
 
 
