@@ -1,10 +1,27 @@
 class CommentsController < ApplicationController
+    before_action :authenticate_user!
+
+    def new
+        @article = Article.find params[:article_id]
+        @comment = Comment.new
+     end
+
+    def reply
+      @article = Article.find params[:article_id]
+      @comment = Comment.new
+      @parent = params[:id]
+
+      render :new
+    end
+
+
     def create
         @comment = current_user.comments.new(comment_params)
-        if !@comment.save
-            flash[:notice] = @comment.errors.full_messages.to_sentence
+        if @comment.save
+        redirect_to article_path(params[:article_id]), notice: "Comment was successfull published."
+        else
+        flash[:notice] = @comment.errors.full_messages.to_sentence
         end
-        redirect_to article_path(params[:article_id])
     end
 
 
